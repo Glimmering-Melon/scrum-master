@@ -27,4 +27,3 @@ connectDB(process.env.MONGO_URL)
     console.error("❌ Mongo connection failed:", e.message);
     process.exit(1);
   });
-  

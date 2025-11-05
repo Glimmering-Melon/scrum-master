@@ -4,13 +4,15 @@ import { requireAuth } from "../middleware/auth.js";
 
 const router = Router();
 
-// GET /api/employees  (Supervisor xem danh sách)
+// GET /api/employees
 router.get("/", requireAuth(["supervisor"]), async (req, res) => {
-  const employees = await User.find({ role: "employee" }).select("-passwordHash").lean();
+  const employees = await User.find({ role: "employee" })
+    .select("-passwordHash")
+    .lean();
   res.json(employees);
 });
 
-// POST /api/employees  (Supervisor thêm nhân viên)
+// POST /api/employees (future)
 router.post("/", requireAuth(["supervisor"]), async (req, res) => {
   res.status(501).json({ message: "Implement create employee later" });
 });
